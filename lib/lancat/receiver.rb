@@ -1,9 +1,9 @@
 module Lancat
   class Receiver
-    def initialize(verbose, timeout, input)
+    def initialize(verbose, timeout, output)
       @verbose = verbose
       @timeout = timeout
-      @input = input
+      @output = output
     end
   end
 end

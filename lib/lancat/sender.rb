@@ -1,9 +1,9 @@
 module Lancat
   class Sender
-    def initialize(verbose, timeout, output)
+    def initialize(verbose, timeout, input)
       @verbose = verbose
       @timeout = timeout
-      @output = output
+      @input = input
     end
   end
 end
