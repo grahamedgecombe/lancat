@@ -36,7 +36,7 @@ module Lancat
         loop do
           begin
             data = client.readpartial(4096)
-            STDOUT.write(data)
+            @output.write(data)
           rescue EOFError
             break
           end

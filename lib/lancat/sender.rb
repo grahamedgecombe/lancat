@@ -49,7 +49,7 @@ module Lancat
 
         loop do
           begin
-            data = STDIN.readpartial(4096)
+            data = @input.readpartial(4096)
             client.write(data)
           rescue EOFError
             break
