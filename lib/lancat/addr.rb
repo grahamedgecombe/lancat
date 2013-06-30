@@ -1,0 +1,4 @@
+module Lancat
+  MULTICAST_ADDR = '224.1.2.3'
+  MULTICAST_PORT = 7625
+end

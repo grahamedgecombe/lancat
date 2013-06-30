@@ -42,6 +42,8 @@ end
 
 if options[:send]
   sender = Lancat::Sender.new(options[:verbose], options[:timeout], STDIN)
+  sender.start
 else # options[:receive]
   receiver = Lancat::Receiver.new(options[:verbose], options[:timeout], STDOUT)
+  receiver.start
 end
