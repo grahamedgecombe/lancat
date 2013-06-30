@@ -102,7 +102,7 @@ the cipher text instead of the plain text.
 ### X11 clipboard
 
 The `xclip` command could be used to send the contents of the clipboard over
-the network - I frequently need way to copy complicated URLs between machines.
+the network - I frequently need a way to copy complicated URLs between machines.
 On the sender:
 
     xclip -o -selection clipboard | lancat -s
