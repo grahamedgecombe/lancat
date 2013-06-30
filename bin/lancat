@@ -21,7 +21,7 @@ OptionParser.new do |opts|
     options[:send] = v
   end
 
-  opts.on('-t', '--timeout=N', Integer, 'Connection timeout in seconds (default: 300)') do |v|
+  opts.on('-t', '--timeout=N', Integer, 'Timeout in seconds (default: 300)') do |v|
     options[:timeout] = v
   end
 
