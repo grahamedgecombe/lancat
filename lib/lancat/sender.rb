@@ -42,7 +42,7 @@ module Lancat
           multicast_sock.close
         end
 
-        abort 'Timed out.' if client.nil?
+        abort 'lancat: Timeout' if client.nil?
 
         _, _, _, remote = client.peeraddr(:numeric)
         STDERR.puts "Connection from #{remote}, writing data..." if @verbose

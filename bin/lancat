@@ -37,7 +37,7 @@ OptionParser.new do |opts|
 end.parse!
 
 if not (options[:send] ^ options[:receive])
-  abort 'Either --receive or --send must be specified.'
+  abort 'lancat: Either --receive or --send must be specified'
 end
 
 if options[:send]
