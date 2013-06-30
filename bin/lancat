@@ -37,8 +37,7 @@ OptionParser.new do |opts|
 end.parse!
 
 if not (options[:send] ^ options[:receive])
-  $stderr.puts 'Either --receive or --send must be specified.'
-  exit
+  abort 'Either --receive or --send must be specified.'
 end
 
 if options[:send]
