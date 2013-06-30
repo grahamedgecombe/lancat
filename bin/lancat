@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+require 'lancat'
+require 'optparse'
+
+options = { :timeout => 300 }
+
+OptionParser.new do |opts|
+  opts.banner = 'Usage: lancat [options]'
+  opts.separator ''
+  opts.separator 'Options:'
+
+  opts.on('-v', '--verbose', 'Verbose output') do |v|
+    options[:verbose] = v
+  end
+
+  opts.on('-r', '--receive', 'Run in receiving mode') do |v|
+    options[:receive] = v
+  end
+
+  opts.on('-s', '--send', 'Run in sending mode') do |v|
+    options[:send] = v
+  end
+
+  opts.on('-t', '--timeout=N', Integer, 'Connection timeout in seconds (default: 300)') do |v|
+    options[:timeout] = v
+  end
+
+  opts.on_tail('-h' , '--help', 'Show this help message') do
+    puts opts
+    exit
+  end
+
+  opts.on_tail('--version', 'Show version number') do
+    puts Lancat::VERSION
+    exit
+  end
+end.parse!
+
+if not (options[:send] ^ options[:receive])
+  $stderr.puts 'Either --receive or --send must be specified.'
+  exit
+end
+
+if options[:send]
+  sender = Lancat::Sender.new(options[:verbose], options[:timeout], STDIN)
+else # options[:receive]
+  receiver = Lancat::Receiver.new(options[:verbose], options[:timeout], STDOUT)
+end
