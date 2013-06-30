@@ -44,6 +44,7 @@ module Lancat
 
         abort 'lancat: Timeout' if client.nil?
 
+        # read all data from @input until EOF, and write it to the client socket
         _, _, _, remote = client.peeraddr(:numeric)
         STDERR.puts "Connection from #{remote}, writing data..." if @verbose
 

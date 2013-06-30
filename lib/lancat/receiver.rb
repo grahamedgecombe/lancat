@@ -15,6 +15,8 @@ module Lancat
       addr = nil
       port = nil
 
+      # wait for multicast packet to find the port number/IP address of the
+      # other end
       multicast_sock = UDPSocket.new(Socket::AF_INET)
       begin
         ips = IPAddr.new(MULTICAST_ADDR).hton + IPAddr.new('0.0.0.0').hton
@@ -29,6 +31,8 @@ module Lancat
         multicast_sock.close
       end
 
+      # connect to that IP/port over TCP, read until EOF and write the data to
+      # @output
       STDERR.puts "Connecting to #{addr}:#{port}..." if @verbose
       client = TCPSocket.new(addr, port)
       begin
